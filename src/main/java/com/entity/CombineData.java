@@ -14,10 +14,10 @@ public class CombineData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String attributeFromA1;
-    private String attributeFromA2;
-    private String attributeFromB1;
-    private String attributeFromB2;
+    private String studentA1;
+    private String StudentA2;
+    private String departmentB1;
+    private String departmentB2;  
 
 //    private Long id;
 //    private String attribute1;

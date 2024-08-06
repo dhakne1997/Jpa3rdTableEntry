@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.entity.Department;
-import com.service.TableBService;
+import com.service.DepartmentService;
 
 @RestController
 @RequestMapping("/tableB")
-public class TableBController {
+public class DepartmentController {
 
     @Autowired
-    private TableBService tableBService;
+    private DepartmentService departmentService;
 
     @GetMapping("/{id}")
     public Department getTableB(@PathVariable Long id) {
-        return tableBService.getTableB(id);
+        return departmentService.getTableB(id);
     }
 }
 

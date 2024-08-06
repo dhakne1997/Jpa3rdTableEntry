@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.entity.CombineData;
-import com.service.TableCService;
+import com.service.CombineDataService;
 
 @RestController
 @RequestMapping("/tableC")
-public class TableCController {
+public class CombineDataController {
 
     @Autowired
-    private TableCService tableCService;
+    private CombineDataService combineDataService;
 
     @PostMapping("/create")
     public CombineData createTableC(@RequestParam Long tableAId, @RequestParam Long tableBId) {
-        return tableCService.createTableC(tableAId, tableBId);
+        return combineDataService.createTableC(tableAId, tableBId);
     }
 }
 

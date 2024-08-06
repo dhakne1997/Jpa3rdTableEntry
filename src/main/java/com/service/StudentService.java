@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.entity.Student;
-import com.repo.TableARepository;
+import com.repo.StudentRepository;
 
 @Service
-public class TableAService {
+public class StudentService {
 
     @Autowired
-    private TableARepository tableARepository;
+    private StudentRepository studentRepository;
 
     public Student getTableA(Long id) {
-        return tableARepository.findById(id).orElse(null);
+        return studentRepository.findById(id).orElse(null);
     }
 }
 

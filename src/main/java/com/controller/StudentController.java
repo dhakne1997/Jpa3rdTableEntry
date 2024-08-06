@@ -5,17 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.entity.Student;
-import com.service.TableAService;
+import com.service.StudentService;
 
 @RestController
 @RequestMapping("/tableA")
-public class TableAController {
+public class StudentController {
 
     @Autowired
-    private TableAService tableAService;
+    private StudentService studentService;
 
     @GetMapping("/{id}")
     public Student getTableA(@PathVariable Long id) {
-        return tableAService.getTableA(id);
+        return studentService.getTableA(id);
     }
 }

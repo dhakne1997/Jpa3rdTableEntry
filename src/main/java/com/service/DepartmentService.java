@@ -5,16 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.entity.Department;
-import com.repo.TableBRepository;
+import com.repo.DepartmentRepository;
 
 @Service
-public class TableBService {
+public class DepartmentService {
 
     @Autowired
-    private TableBRepository tableBRepository;
+    private DepartmentRepository departmentRepository;
 
     public Department getTableB(Long id) {
-        return tableBRepository.findById(id).orElse(null);
+        return departmentRepository.findById(id).orElse(null);
     }
 }
 

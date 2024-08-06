@@ -9,25 +9,25 @@ import com.entity.CombineData;
 import com.repo.TableCRepository;
 
 @Service
-public class TableCService {
+public class CombineDataService {
 
     @Autowired
     private TableCRepository tableCRepository;
     @Autowired
-    private TableAService tableAService;
+    private StudentService studentService;
     @Autowired
-    private TableBService tableBService;
+    private DepartmentService departmentService;
 
     public CombineData createTableC(Long tableAId, Long tableBId) {
-        Student student = tableAService.getTableA(tableAId);
-        Department department = tableBService.getTableB(tableBId);
+        Student student = studentService.getTableA(tableAId);
+        Department department = departmentService.getTableB(tableBId);
 
         if (student != null && department != null) {
             CombineData combineData = new CombineData();
-            combineData.setAttributeFromA1(student.getName());
-            combineData.setAttributeFromA2(student.getEmail());
-            combineData.setAttributeFromB1(department.getDeptName());
-            combineData.setAttributeFromB2(department.getLocation());
+            combineData.setStudentA1(student.getName());
+            combineData.setStudentA2(student.getEmail());
+            combineData.setDepartmentB1(department.getDeptName());
+            combineData.setDepartmentB2(department.getLocation());
             return tableCRepository.save(combineData);
         }
 
