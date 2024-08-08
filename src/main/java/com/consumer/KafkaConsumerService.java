@@ -1,13 +1,14 @@
 package com.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.common.errors.SerializationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.entity.Constants;
+import com.entity.Department;
+import com.entity.Student;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
@@ -21,7 +22,7 @@ public class KafkaConsumerService {@Autowired
 	private String kafkatopic;
 
 
-	@KafkaListener(id ="test-consumer-group",topics="account-creation-topic",containerFactory = "kafkaMEContainerFactory")
+	@KafkaListener(id ="my-project-topic-group0",topics="my-project-topic",containerFactory = "kafkaMEContainerFactory")
 	public void listenToTopic(ConsumerRecord<String, String> record) {
 	    try {
 	      
@@ -40,4 +41,36 @@ public class KafkaConsumerService {@Autowired
 	    } catch (Exception e) {
 	        System.err.println("Error processing record: " + e.getMessage());
 	    } 
-	}}
+	}
+	
+	
+	@KafkaListener(id ="my-project-topic-group1",topics="my-project-topic",containerFactory = "kafkaMEContainerFactory")
+	public void listenToTopic1(ConsumerRecord<String, String> record) {
+        try {
+        	System.out.println(record.value());
+            String student = record.value(); 
+             Student stud=gson.fromJson(student, Student.class);
+            System.out.println("The  message received for student: " + student.toString());
+        } catch (SerializationException e) {
+            System.err.println("Error deserializing message: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error processing message: " + e.getMessage());
+        }
+    }
+
+	
+	@KafkaListener(id ="my-project-topic-group2",topics="my-project-topic",containerFactory = "kafkaMEContainerFactory")
+	public void listenToTopic2(ConsumerRecord<String, String> record) {
+        try {
+        	System.out.println(record.value());
+            String department = record.value(); 
+            Department depar=gson.fromJson(department, Department.class);
+            System.out.println("The  message received for department: " + department.toString());
+        } catch (SerializationException e) {
+            System.err.println("Error deserializing message: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error processing message: " + e.getMessage());
+        }
+    }
+
+}

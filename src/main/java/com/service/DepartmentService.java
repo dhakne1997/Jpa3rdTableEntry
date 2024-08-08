@@ -16,5 +16,9 @@ public class DepartmentService {
     public Department getTableB(Long id) {
         return departmentRepository.findById(id).orElse(null);
     }
+
+	public Department save(Department department) {
+		return departmentRepository.save(department);
+	}
 }
 

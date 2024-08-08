@@ -7,6 +7,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.entity.Constants;
+import com.entity.Department;
+import com.entity.Student;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -16,6 +18,7 @@ public class KafkaProducerService {
 
 	@Value("${kafka.topic}")
 	private String kafkatopic;
+	
 
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
@@ -39,4 +42,30 @@ public class KafkaProducerService {
 	    }
 	}
 
-}
+
+
+	public void sendStudentDetails(Student student) {
+			try {
+				kafkaTemplate.send(kafkatopic, gson.toJson(student));
+				System.out.println("StudentDetails added Successful send request");
+			} catch (Exception e) {
+		        System.err.println("Error StudentDetails not added Successful send request: " + e.getMessage());
+
+			}
+		}
+
+
+
+	public void sendDepartmentDetails(Department department) {
+		try {
+			kafkaTemplate.send(kafkatopic, gson.toJson(department));
+			System.out.println("DepartmentDetails added Successful send request");
+		} catch (Exception e) {
+	        System.err.println("Error DepartmentDetails not added Successful send request: " + e.getMessage());
+
+		}
+		
+	}
+		
+	}
+
