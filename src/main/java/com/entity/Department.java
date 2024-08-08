@@ -58,6 +58,10 @@ public class Department {
 		this.head = head;
 		this.numOfFaculties = numOfFaculties;
 	}
+	public Department() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 }
 

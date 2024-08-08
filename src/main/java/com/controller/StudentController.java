@@ -13,6 +13,7 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+ 
 
     @GetMapping("/{id}")
     public Student getTableA(@PathVariable Long id) {

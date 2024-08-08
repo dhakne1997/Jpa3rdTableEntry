@@ -57,6 +57,10 @@ public class Student {
 		this.email = email;
 		this.major = major;
 	}
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 }
